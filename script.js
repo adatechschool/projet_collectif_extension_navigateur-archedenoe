@@ -13,6 +13,8 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+let count = getRandomInt(10);
+
 //Fonction avec fetch de l'api Unsplash pour une image random
 function changeimage(animal) {
   fetch(
@@ -26,10 +28,14 @@ function changeimage(animal) {
       }
     })
     .then(function (value) {
-      console.log(value);
       let image = document.getElementsByTagName("img");
+      console.log(image);
       for (let i = 0; i < image.length; i++) {
-        image[i].src = value.results[getRandomInt(10)].urls.small;
+        image[i].src = value.results[count].urls.small;
+        count++;
+        if (count == 10 ){
+          count = 0;
+        }
       }
     });
 }
@@ -98,8 +104,7 @@ button4.style.border = "2px solid white";
 button4.style.borderRadius = "0px 20px 20px 0px";
 
 let allButtons = document.getElementsByClassName("btn-styled");
-console.log("COUCOUUUUUUUUUUU", allButtons);
-
+ 
 for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundSize = "cover";
   allButtons[i].style.fontSize = "20px";
