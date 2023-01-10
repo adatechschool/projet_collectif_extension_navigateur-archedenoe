@@ -56,7 +56,7 @@ var divButtons = document.createElement("div");
 divButtons.className = "div-buttons";
 divButtons.style.backgroundColor = "black";
 divButtons.style.position = "fixed";
-divButtons.style.zIndex = "10";
+divButtons.style.zIndex = "100";
 divButtons.style.bottom = "0px";
 divButtons.style.left = "50%"
 divButtons.style.transform = "translateX(-50%)";
@@ -103,30 +103,58 @@ divButtons.appendChild(button4);
 
 // Css des boutons
 button1.style.background = `url(${animalicon.Vautour})`;
-button1.style.backgroundSize = "cover";
+// button1.style.backgroundSize = "cover";
 button1.style.filter = "invert(1)";
-button1.style.fontSize = "20px";
-button1.style.height = "70px";
-button1.style.width = "70px";
+// button1.style.fontSize = "20px";
+// button1.style.height = "70px";
+// button1.style.width = "70px";
+button1.style.border = "2px solid black";
 
 button2.style.background = `url(${animalicon.Lynx})`;
-button2.style.backgroundSize = "cover";
+// button2.style.backgroundSize = "cover";
 button2.style.filter = "invert(1)";
-button2.style.fontSize = "20px";
-button2.style.width = "70px";
-button2.style.height = "70px";
+// button2.style.fontSize = "20px";
+// button2.style.width = "70px";
+// button2.style.height = "70px";
+button2.style.border = "2px solid black";
 
 button3.style.background = `url(${animalicon.Hippocampe})`;
-button3.style.backgroundSize = "cover";
-button3.style.fontSize = "20px";
-button3.style.width = "70px";
-button3.style.height = "70px";
+// button3.style.backgroundSize = "cover";
+// button3.style.fontSize = "20px";
+// button3.style.width = "70px";
+// button3.style.height = "70px";
 button3.style.border = "2px solid white";
 
 button4.style.background = `url(${animalicon.Coccinelle})`;
-button4.style.backgroundSize = "cover";
-button4.style.fontSize = "20px";
-button4.style.width = "70px";
-button4.style.height = "70px";
+// button4.style.backgroundSize = "cover";
+// button4.style.fontSize = "20px";
+// button4.style.width = "70px";
+// button4.style.height = "70px";
 button4.style.border = "2px solid white";
+
+// function button(number){
+// number.style.backgroundSize = "cover";
+// number.style.fontSize = "20px";
+// number.style.width = "70px";
+// number.style.height = "70px";
+// number.style.border = "2px solid white";
+// }
+
+// button(button1)
+// button(button2)
+// button(button3)
+// button(button4)
+
+let allButtons = document.getElementsByClassName("btn-styled");
+console.log("COUCOUUUUUUUUUUU" ,allButtons)
+
+
+
+for (let i = 0; i < allButtons.length; i++){
+      allButtons[i].style.backgroundSize = "cover";
+      allButtons[i].style.fontSize = "20px";
+      allButtons[i].style.width = "70px";
+      allButtons[i].style.height = "70px";
+
+}
 
