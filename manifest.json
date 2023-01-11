@@ -8,5 +8,10 @@
         "matches": ["<all_urls>"],
         "js": ["script.js"]
         }
-    ]
+    ],
+    "web_accessible_resources": [{
+        "resources": ["images/*.png"],
+        "matches": [],
+       "extension_ids": []
+      }]
 }

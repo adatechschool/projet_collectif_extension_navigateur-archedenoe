@@ -1,6 +1,6 @@
 //Images des icones
 let animalicon = {
-  Vautour: "https://cdn-icons-png.flaticon.com/512/2149/2149977.png",
+//   Vautour: "https://cdn-icons-png.flaticon.com/512/2149/2149977.png",
   Coccinelle:
     "https://cdn.icon-icons.com/icons2/2070/PNG/512/ladybug_icon_126534.png",
   Hippocampe:
@@ -40,6 +40,14 @@ function changeimage(animal) {
     });
 }
 
+function changeButton(){
+  if (button1.style.backgroundColor == "black"){
+    button1.style.backgroundColor = "#99ff99";
+  }else{
+    button1.style.backgroundColor = "black"
+  }
+}
+
 // Creation d'une div
 var divButtons = document.createElement("div");
 divButtons.className = "div-buttons";
@@ -59,6 +67,7 @@ button1.type = "button";
 button1.className = "btn-styled";
 button1.onclick = function () {
   changeimage("vulture");
+  changeButton();
 };
 divButtons.appendChild(button1);
 
@@ -87,21 +96,23 @@ button4.onclick = function () {
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${animalicon.Vautour})`;
-button1.style.filter = "invert(1)";
+button1.style.background = `url(${"chrome-extension://ackopbckeaeadpbomfdeebdcdfaennkg/images/vautour.png"})`;
 button1.style.border = "2px solid black";
 button1.style.borderRadius = "20px 0% 0% 20px";
+button1.style.backgroundColor = "black";
 
 button2.style.background = `url(${animalicon.Lynx})`;
-button2.style.filter = "invert(1)";
 button2.style.border = "2px solid black";
+button2.style.backgroundColor = "black";
 
 button3.style.background = `url(${animalicon.Hippocampe})`;
 button3.style.border = "2px solid white";
+button3.style.backgroundColor = "black"
 
 button4.style.background = `url(${animalicon.Coccinelle})`;
 button4.style.border = "2px solid white";
 button4.style.borderRadius = "0px 20px 20px 0px";
+button4.style.backgroundColor = "black"
 
 let allButtons = document.getElementsByClassName("btn-styled");
  
