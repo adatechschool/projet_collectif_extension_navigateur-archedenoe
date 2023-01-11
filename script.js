@@ -1,13 +1,3 @@
-//Images des icones
-let animalicon = {
-//   Vautour: "https://cdn-icons-png.flaticon.com/512/2149/2149977.png",
-  Coccinelle:
-    "https://cdn.icon-icons.com/icons2/2070/PNG/512/ladybug_icon_126534.png",
-  Hippocampe:
-    "https://cdn.icon-icons.com/icons2/2070/PNG/512/seahorse_icon_126006.png",
-  Lynx: "https://static.thenounproject.com/png/291916-200.png",
-};
-
 //Fonction pour avoir un nombre random
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -40,11 +30,11 @@ function changeimage(animal) {
     });
 }
 
-function changeButton(){
-  if (button1.style.backgroundColor == "black"){
-    button1.style.backgroundColor = "#99ff99";
+function changeButton(btn){
+  if (btn.style.backgroundColor == "black"){
+    btn.style.backgroundColor = "#99ff99";
   }else{
-    button1.style.backgroundColor = "black"
+    btn.style.backgroundColor = "black"
   }
 }
 
@@ -67,7 +57,7 @@ button1.type = "button";
 button1.className = "btn-styled";
 button1.onclick = function () {
   changeimage("vulture");
-  changeButton();
+  changeButton(button1);
 };
 divButtons.appendChild(button1);
 
@@ -76,6 +66,7 @@ button2.type = "button";
 button2.className = "btn-styled";
 button2.onclick = function () {
   changeimage("lynx");
+  changeButton(button2);
 };
 divButtons.appendChild(button2);
 
@@ -84,6 +75,7 @@ button3.type = "button";
 button3.className = "btn-styled";
 button3.onclick = function () {
   changeimage("seahorse");
+  changeButton(button3);
 };
 divButtons.appendChild(button3);
 
@@ -92,27 +84,20 @@ button4.type = "button";
 button4.className = "btn-styled";
 button4.onclick = function () {
   changeimage("ladybug");
+  changeButton(button4);
 };
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${"chrome-extension://ackopbckeaeadpbomfdeebdcdfaennkg/images/vautour.png"})`;
-button1.style.border = "2px solid black";
+button1.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/vautour-modified.png"})`;
 button1.style.borderRadius = "20px 0% 0% 20px";
-button1.style.backgroundColor = "black";
 
-button2.style.background = `url(${animalicon.Lynx})`;
-button2.style.border = "2px solid black";
-button2.style.backgroundColor = "black";
+button2.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/lynx-modified.png"})`;
 
-button3.style.background = `url(${animalicon.Hippocampe})`;
-button3.style.border = "2px solid white";
-button3.style.backgroundColor = "black"
+button3.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/hippocampe.png"})`;
 
-button4.style.background = `url(${animalicon.Coccinelle})`;
-button4.style.border = "2px solid white";
+button4.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/coccinelle.png"})`;
 button4.style.borderRadius = "0px 20px 20px 0px";
-button4.style.backgroundColor = "black"
 
 let allButtons = document.getElementsByClassName("btn-styled");
  
@@ -121,4 +106,6 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.fontSize = "20px";
   allButtons[i].style.width = "70px";
   allButtons[i].style.height = "70px";
+  allButtons[i].style.backgroundColor = "black";
+  allButtons[i].style.border = "2px solid white";
 }
