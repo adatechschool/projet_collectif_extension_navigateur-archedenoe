@@ -1,5 +1,6 @@
 body {
-    background: url(./images/fond.jpg)  no-repeat center/cover;
+    /* background: url(./images/fond.jpg)  no-repeat center/cover; */
+    background-color: white;
     margin: 0;
     padding: 0;
 }

@@ -146,6 +146,21 @@ function Newanimal(){
       }
     })
     .then(function (value) {
-      console.log(value[0].characteristics.diet)
+      let divnews = document.createElement("div");
+      divnews.className = "Info";
+      divnews.innerHTML = "Regime alimentaire : " + value[0].characteristics.diet;
+      document.body.appendChild(divnews);
+      divnews.style.display = "inline";
+      divnews.style.backgroundColor = "#fce3ad";
+      divnews.style.padding = "5px";
+      divnews.style.fontSize = "18px";
+      divnews.style.border = "#f3ad6b 2px solid";
+      divnews.style.borderRadius = "10px";
+      divnews.style.position = "fixed";
+      divnews.style.zIndex = "100";
+      divnews.style.bottom = "100px";
+      divnews.style.left = "-10%";
     })
 }
+
+Newanimal();
