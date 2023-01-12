@@ -1,3 +1,7 @@
+// Code Helder
+
+let ExtensionId = chrome.runtime.id;
+
 //Fonction pour avoir un nombre random
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -32,7 +36,13 @@ function changeimage(animal) {
 
 function changeButton(btn){
   if (btn.style.backgroundColor == "black"){
-    btn.style.backgroundColor = "#99ff99";
+    for (let i = 0; i < allButtons.length; i++){
+      if (allButtons[i] == btn ){
+        btn.style.backgroundColor = "#99ff99";
+      } else{
+        allButtons[i].style.backgroundColor = "black"
+      }
+    }
   }else{
     btn.style.backgroundColor = "black"
   }
@@ -89,23 +99,25 @@ button4.onclick = function () {
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/vautour-modified.png"})`;
+button1.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/vautour-modified.png"})`;
 button1.style.borderRadius = "20px 0% 0% 20px";
 
-button2.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/lynx-modified.png"})`;
+button2.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/lynx-modified.png"})`;
 
-button3.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/hippocampe.png"})`;
+button3.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/hippocampe.png"})`;
 
-button4.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/coccinelle.png"})`;
+button4.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/coccinelle.png"})`;
 button4.style.borderRadius = "0px 20px 20px 0px";
 
 let allButtons = document.getElementsByClassName("btn-styled");
  
 for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundSize = "cover";
-  allButtons[i].style.fontSize = "20px";
   allButtons[i].style.width = "70px";
   allButtons[i].style.height = "70px";
   allButtons[i].style.backgroundColor = "black";
   allButtons[i].style.border = "2px solid white";
 }
+
+console.log(button1);
+console.log(allButtons[0]);
