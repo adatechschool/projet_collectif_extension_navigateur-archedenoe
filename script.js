@@ -157,6 +157,36 @@ function Newanimal() {
       divnews.innerHTML =
         "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
+<<<<<<< HEAD
+=======
+      divnews.style.display = "inline";
+      divnews.style.backgroundColor = "#fce3ad";
+      divnews.style.padding = "5px";
+      divnews.style.fontSize = "18px";
+      divnews.style.border = "#f3ad6b 2px solid";
+      divnews.style.borderRadius = "10px";
+      divnews.style.position = "fixed";
+      divnews.style.zIndex = "100";
+      divnews.style.bottom = "100px";
+<<<<<<< HEAD
+      divnews.style.left = "-10px";
+      let test = 0;
+      function deplacement() {
+        divnews.style.transform = `translateX(10*${test}px)`;
+        test++;
+        setTimeout(function () {
+          deplacement, 5000;
+        });
+      }
+      deplacement();
+    });
+=======
+      divnews.style.left = "0%";
+      divnews.style.transform = "TranslateX(0px)"
+    })
+>>>>>>> fb126d3 (12/01)
+}
+>>>>>>> e84c953 (12/01)
 
       let divnews2 = document.createElement("div");
       divnews2.className = "Info";
