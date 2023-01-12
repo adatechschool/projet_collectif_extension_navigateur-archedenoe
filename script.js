@@ -1,3 +1,6 @@
+// Code Helder
+
+
 //Fonction pour avoir un nombre random
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -103,7 +106,6 @@ let allButtons = document.getElementsByClassName("btn-styled");
  
 for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundSize = "cover";
-  allButtons[i].style.fontSize = "20px";
   allButtons[i].style.width = "70px";
   allButtons[i].style.height = "70px";
   allButtons[i].style.backgroundColor = "black";
