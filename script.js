@@ -120,4 +120,3 @@ for (let i = 0; i < allButtons.length; i++) {
 }
 
 console.log(button1);
-console.log(allButtons[0]);
