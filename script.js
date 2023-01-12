@@ -119,4 +119,30 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.border = "2px solid white";
 }
 
-console.log(button1);
+let inactivityTime = function () {
+  let time;
+  window.onload = resetTimer;
+  document.onmousemove = resetTimer;
+  document.onkeypress = resetTimer;
+  function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(function() {
+          changeimage("seahorse");
+      }, 5000);
+  }
+};
+// inactivityTime();
+
+let nom = 'seahorse'
+
+fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
+  headers: { 'X-Api-Key': 'A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx'},
+})
+  .then(function (res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then(function (value) {
+    console.log(value[0].characteristics.diet)
+  })
