@@ -1,5 +1,6 @@
 // Code Helder
 
+let ExtensionId = chrome.runtime.id;
 
 //Fonction pour avoir un nombre random
 function getRandomInt(max) {
@@ -92,14 +93,14 @@ button4.onclick = function () {
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/vautour-modified.png"})`;
+button1.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/vautour-modified.png"})`;
 button1.style.borderRadius = "20px 0% 0% 20px";
 
-button2.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/lynx-modified.png"})`;
+button2.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/lynx-modified.png"})`;
 
-button3.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/hippocampe.png"})`;
+button3.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/hippocampe.png"})`;
 
-button4.style.background = `url(${"chrome-extension://jdfcfpipfoeabnbjejpjnkpoobejpjak/images/coccinelle.png"})`;
+button4.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/coccinelle.png"})`;
 button4.style.borderRadius = "0px 20px 20px 0px";
 
 let allButtons = document.getElementsByClassName("btn-styled");
