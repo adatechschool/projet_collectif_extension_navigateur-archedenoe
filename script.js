@@ -119,5 +119,48 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.border = "2px solid white";
 }
 
-console.log(button1);
-console.log(allButtons[0]);
+let inactivityTime = function () {
+  let time;
+  window.onload = resetTimer;
+  document.onmousemove = resetTimer;
+  document.onkeypress = resetTimer;
+  function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(function() {
+          changeimage("seahorse");
+      }, 5000);
+  }
+};
+// inactivityTime();
+
+function Newanimal(){
+  
+  let nom = 'seahorse'
+
+  fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
+    headers: { 'X-Api-Key': 'A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx'},
+  })
+    .then(function (res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function (value) {
+      let divnews = document.createElement("div");
+      divnews.className = "Info";
+      divnews.innerHTML = "Regime alimentaire : " + value[0].characteristics.diet;
+      document.body.appendChild(divnews);
+      divnews.style.display = "inline";
+      divnews.style.backgroundColor = "#fce3ad";
+      divnews.style.padding = "5px";
+      divnews.style.fontSize = "18px";
+      divnews.style.border = "#f3ad6b 2px solid";
+      divnews.style.borderRadius = "10px";
+      divnews.style.position = "fixed";
+      divnews.style.zIndex = "100";
+      divnews.style.bottom = "100px";
+      divnews.style.left = "-10%";
+    })
+}
+
+Newanimal();
