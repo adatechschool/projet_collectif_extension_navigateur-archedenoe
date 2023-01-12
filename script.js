@@ -133,16 +133,19 @@ let inactivityTime = function () {
 };
 // inactivityTime();
 
-let nom = 'seahorse'
+function Newanimal(){
+  
+  let nom = 'seahorse'
 
-fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
-  headers: { 'X-Api-Key': 'A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx'},
-})
-  .then(function (res) {
-    if (res.ok) {
-      return res.json();
-    }
+  fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
+    headers: { 'X-Api-Key': 'A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx'},
   })
-  .then(function (value) {
-    console.log(value[0].characteristics.diet)
-  })
+    .then(function (res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function (value) {
+      console.log(value[0].characteristics.diet)
+    })
+}
