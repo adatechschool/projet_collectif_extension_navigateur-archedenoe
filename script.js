@@ -27,24 +27,24 @@ function changeimage(animal) {
       for (let i = 0; i < image.length; i++) {
         image[i].src = value.results[count].urls.small;
         count++;
-        if (count == 10 ){
+        if (count == 10) {
           count = 0;
         }
       }
     });
 }
 
-function changeButton(btn){
-  if (btn.style.backgroundColor == "black"){
-    for (let i = 0; i < allButtons.length; i++){
-      if (allButtons[i] == btn ){
+function changeButton(btn) {
+  if (btn.style.backgroundColor == "black") {
+    for (let i = 0; i < allButtons.length; i++) {
+      if (allButtons[i] == btn) {
         btn.style.backgroundColor = "#99ff99";
-      } else{
-        allButtons[i].style.backgroundColor = "black"
+      } else {
+        allButtons[i].style.backgroundColor = "black";
       }
     }
-  }else{
-    btn.style.backgroundColor = "black"
+  } else {
+    btn.style.backgroundColor = "black";
   }
 }
 
@@ -99,18 +99,26 @@ button4.onclick = function () {
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/vautour-modified.png"})`;
+button1.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/vautour-modified.png"
+})`;
 button1.style.borderRadius = "20px 0% 0% 20px";
 
-button2.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/lynx-modified.png"})`;
+button2.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/lynx-modified.png"
+})`;
 
-button3.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/hippocampe.png"})`;
+button3.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/hippocampe.png"
+})`;
 
-button4.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/coccinelle.png"})`;
+button4.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/coccinelle.png"
+})`;
 button4.style.borderRadius = "0px 20px 20px 0px";
 
 let allButtons = document.getElementsByClassName("btn-styled");
- 
+
 for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundSize = "cover";
   allButtons[i].style.width = "70px";
@@ -125,20 +133,19 @@ let inactivityTime = function () {
   document.onmousemove = resetTimer;
   document.onkeypress = resetTimer;
   function resetTimer() {
-      clearTimeout(time);
-      time = setTimeout(function() {
-          changeimage("seahorse");
-      }, 5000);
+    clearTimeout(time);
+    time = setTimeout(function () {
+      changeimage("seahorse");
+    }, 5000);
   }
 };
 // inactivityTime();
 
-function Newanimal(){
-  
-  let nom = 'seahorse'
+function Newanimal() {
+  let nom = "seahorse";
 
   fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
-    headers: { 'X-Api-Key': 'A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx'},
+    headers: { "X-Api-Key": "A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx" },
   })
     .then(function (res) {
       if (res.ok) {
@@ -148,7 +155,8 @@ function Newanimal(){
     .then(function (value) {
       let divnews = document.createElement("div");
       divnews.className = "Info";
-      divnews.innerHTML = "Regime alimentaire : " + value[0].characteristics.diet;
+      divnews.innerHTML =
+        "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
       divnews.style.display = "inline";
       divnews.style.backgroundColor = "#fce3ad";
@@ -159,8 +167,17 @@ function Newanimal(){
       divnews.style.position = "fixed";
       divnews.style.zIndex = "100";
       divnews.style.bottom = "100px";
-      divnews.style.left = "-10%";
-    })
+      divnews.style.left = "-10px";
+      let test = 0;
+      function deplacement() {
+        divnews.style.transform = `translateX(10*${test}px)`;
+        test++;
+        setTimeout(function () {
+          deplacement, 5000;
+        });
+      }
+      deplacement();
+    });
 }
 
 Newanimal();
