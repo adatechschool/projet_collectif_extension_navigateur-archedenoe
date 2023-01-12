@@ -36,7 +36,13 @@ function changeimage(animal) {
 
 function changeButton(btn){
   if (btn.style.backgroundColor == "black"){
-    btn.style.backgroundColor = "#99ff99";
+    for (let i = 0; i < allButtons.length; i++){
+      if (allButtons[i] == btn ){
+        btn.style.backgroundColor = "#99ff99";
+      } else{
+        allButtons[i].style.backgroundColor = "black"
+      }
+    }
   }else{
     btn.style.backgroundColor = "black"
   }
@@ -112,3 +118,6 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundColor = "black";
   allButtons[i].style.border = "2px solid white";
 }
+
+console.log(button1);
+console.log(allButtons[0]);
