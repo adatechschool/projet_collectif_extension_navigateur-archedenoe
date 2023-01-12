@@ -168,7 +168,6 @@ function Newanimal() {
       divnews.style.position = "fixed";
       divnews.style.zIndex = "100";
       divnews.style.bottom = "100px";
-<<<<<<< HEAD
       divnews.style.left = "-10px";
       let test = 0;
       function deplacement() {
@@ -180,11 +179,6 @@ function Newanimal() {
       }
       deplacement();
     });
-=======
-      divnews.style.left = "0%";
-      divnews.style.transform = "TranslateX(0px)"
-    })
->>>>>>> fb126d3 (12/01)
 }
 >>>>>>> e84c953 (12/01)
 
