@@ -157,8 +157,7 @@ function Newanimal() {
       divnews.innerHTML =
         "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
-<<<<<<< HEAD
-=======
+
       divnews.style.display = "inline";
       divnews.style.backgroundColor = "#fce3ad";
       divnews.style.padding = "5px";
@@ -169,18 +168,6 @@ function Newanimal() {
       divnews.style.zIndex = "100";
       divnews.style.bottom = "100px";
       divnews.style.left = "-10px";
-      let test = 0;
-      function deplacement() {
-        divnews.style.transform = `translateX(10*${test}px)`;
-        test++;
-        setTimeout(function () {
-          deplacement, 5000;
-        });
-      }
-      deplacement();
-    });
-}
->>>>>>> e84c953 (12/01)
 
       let divnews2 = document.createElement("div");
       divnews2.className = "Info";
@@ -193,6 +180,7 @@ function Newanimal() {
       divnews3.innerHTML =
         "Régime alimentaire 3 :" + value[0].characteristics.diet;
       document.body.appendChild(divnews3);
+
 
       let allDivs = document.getElementsByClassName("Info");
       console.log({ allDivs });
@@ -207,6 +195,7 @@ function Newanimal() {
         allDivs[i].style.zIndex = "100";
         allDivs[i].style.left = "-100px";
       }
+
       divnews.style.bottom = "100px";
       divnews2.style.bottom = "200px";
       divnews3.style.bottom = "300px";
