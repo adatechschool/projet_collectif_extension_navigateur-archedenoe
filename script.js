@@ -1,4 +1,4 @@
-// Code Helder
+// Code Audrey-Timer
 
 let ExtensionId = chrome.runtime.id;
 
@@ -27,24 +27,24 @@ function changeimage(animal) {
       for (let i = 0; i < image.length; i++) {
         image[i].src = value.results[count].urls.small;
         count++;
-        if (count == 10 ){
+        if (count == 10) {
           count = 0;
         }
       }
     });
 }
 
-function changeButton(btn){
-  if (btn.style.backgroundColor == "black"){
-    for (let i = 0; i < allButtons.length; i++){
-      if (allButtons[i] == btn ){
+function changeButton(btn) {
+  if (btn.style.backgroundColor == "black") {
+    for (let i = 0; i < allButtons.length; i++) {
+      if (allButtons[i] == btn) {
         btn.style.backgroundColor = "#99ff99";
-      } else{
-        allButtons[i].style.backgroundColor = "black"
+      } else {
+        allButtons[i].style.backgroundColor = "black";
       }
     }
-  }else{
-    btn.style.backgroundColor = "black"
+  } else {
+    btn.style.backgroundColor = "black";
   }
 }
 
@@ -99,18 +99,26 @@ button4.onclick = function () {
 divButtons.appendChild(button4);
 
 // Css des boutons
-button1.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/vautour-modified.png"})`;
+button1.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/vautour-modified.png"
+})`;
 button1.style.borderRadius = "20px 0% 0% 20px";
 
-button2.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/lynx-modified.png"})`;
+button2.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/lynx-modified.png"
+})`;
 
-button3.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/hippocampe.png"})`;
+button3.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/hippocampe.png"
+})`;
 
-button4.style.background = `url(${"chrome-extension://" + ExtensionId + "/images/coccinelle.png"})`;
+button4.style.background = `url(${
+  "chrome-extension://" + ExtensionId + "/images/coccinelle.png"
+})`;
 button4.style.borderRadius = "0px 20px 20px 0px";
 
 let allButtons = document.getElementsByClassName("btn-styled");
- 
+
 for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundSize = "cover";
   allButtons[i].style.width = "70px";
@@ -118,6 +126,3 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.backgroundColor = "black";
   allButtons[i].style.border = "2px solid white";
 }
-
-console.log(button1);
-console.log(allButtons[0]);
