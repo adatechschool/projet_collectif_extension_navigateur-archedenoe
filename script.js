@@ -158,25 +158,46 @@ function Newanimal() {
       divnews.innerHTML =
         "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
-      divnews.style.display = "inline";
-      divnews.style.backgroundColor = "#fce3ad";
-      divnews.style.padding = "5px";
-      divnews.style.fontSize = "18px";
-      divnews.style.border = "#f3ad6b 2px solid";
-      divnews.style.borderRadius = "10px";
-      divnews.style.position = "fixed";
-      divnews.style.zIndex = "100";
-      divnews.style.bottom = "100px";
-      divnews.style.left = "-10px";
-      let test = 0;
-      function deplacement() {
-        divnews.style.transform = `translateX(10*${test}px)`;
-        test++;
-        setTimeout(function () {
-          deplacement, 5000;
-        });
+      let divnews2 = document.createElement("div");
+      divnews2.className = "Info";
+      divnews2.innerHTML =
+        "Régime alimentaire 2 :" + value[0].characteristics.diet;
+      document.body.appendChild(divnews2);
+      let allDivs = document.getElementsByClassName("Info");
+      console.log({ allDivs });
+      for (let i = 0; i < allDivs.length; i++) {
+        allDivs[i].style.display = "inline";
+        allDivs[i].style.backgroundColor = "#fce3ad";
+        allDivs[i].style.padding = "5px";
+        allDivs[i].style.fontSize = "18px";
+        allDivs[i].style.border = "#f3ad6b 2px solid";
+        allDivs[i].style.borderRadius = "10px";
+        allDivs[i].style.position = "fixed";
+        allDivs[i].style.zIndex = "100";
+        allDivs[i].style.left = "-100px";
       }
-      deplacement();
+
+      divnews.style.bottom = "100px";
+      divnews2.style.bottom = "200px";
+
+      var id = null;
+      function deplacementFromLeft() {
+        for (let i = 0; i < allDivs.length; i++) {
+          var element = allDivs[i];
+          var pos = -100;
+          clearInterval(id);
+          id = setInterval(frame, 10);
+          function frame() {
+            if (pos == 350) {
+              clearInterval(id);
+            } else {
+              pos++;
+              element.style.left = pos + "px";
+            }
+          }
+        }
+      }
+      deplacementFromLeft();
     });
 }
 
