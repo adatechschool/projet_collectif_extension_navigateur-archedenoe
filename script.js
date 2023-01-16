@@ -1,5 +1,3 @@
-// Code Helder
-
 let ExtensionId = chrome.runtime.id;
 
 //Fonction pour avoir un nombre random
