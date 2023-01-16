@@ -135,11 +135,12 @@ let inactivityTime = function () {
   function resetTimer() {
     clearTimeout(time);
     time = setTimeout(function () {
-      changeimage("seahorse");
+      Newanimal();
     }, 5000);
   }
 };
-// inactivityTime();
+inactivityTime();
+
 
 function Newanimal() {
   let nom = "seahorse";
@@ -158,11 +159,18 @@ function Newanimal() {
       divnews.innerHTML =
         "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
+
       let divnews2 = document.createElement("div");
       divnews2.className = "Info";
       divnews2.innerHTML =
         "Régime alimentaire 2 :" + value[0].characteristics.diet;
       document.body.appendChild(divnews2);
+      
+      let divnews3 = document.createElement("div");
+      divnews3.className = "Info";
+      divnews3.innerHTML =
+        "Régime alimentaire 3 :" + value[0].characteristics.diet;
+      document.body.appendChild(divnews3);
       let allDivs = document.getElementsByClassName("Info");
       console.log({ allDivs });
       for (let i = 0; i < allDivs.length; i++) {
@@ -179,26 +187,42 @@ function Newanimal() {
 
       divnews.style.bottom = "100px";
       divnews2.style.bottom = "200px";
+      divnews3.style.bottom = "300px";
 
-      var id = null;
-      function deplacementFromLeft() {
-        for (let i = 0; i < allDivs.length; i++) {
-          var element = allDivs[i];
+      let statut = 0;
+      function arrivingFromLeft() {
+        for (let k = 0; k < allDivs.length; k++) {
           var pos = -100;
-          clearInterval(id);
-          id = setInterval(frame, 10);
+          var id = setInterval(frame, 10);
           function frame() {
             if (pos == 350) {
               clearInterval(id);
             } else {
               pos++;
-              element.style.left = pos + "px";
+              allDivs[k].style.left = pos + "px";
             }
           }
-        }
+        }statut = 1;
       }
-      deplacementFromLeft();
+      arrivingFromLeft();
+      
+      if (statut = 1){
+        console.log("test")
+      }
+
+//       function leavingToLeft() {
+//         for (let k = 0; k < allDivs.length; k++) {
+//           var pos = 340;
+//           var id = setInterval(frame, 10);
+//           function frame() {
+//             if (pos == -100) {
+//               clearInterval(id);
+//             } else {
+//               pos++;
+//               allDivs[k].style.left = "-" + pos + "px";
+//             }
+//           }
+//         }
+//       }
     });
 }
-
-Newanimal();
