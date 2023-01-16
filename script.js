@@ -171,6 +171,7 @@ function Newanimal() {
       divnews3.innerHTML =
         "Régime alimentaire 3 :" + value[0].characteristics.diet;
       document.body.appendChild(divnews3);
+
       let allDivs = document.getElementsByClassName("Info");
       console.log({ allDivs });
       for (let i = 0; i < allDivs.length; i++) {
@@ -184,7 +185,6 @@ function Newanimal() {
         allDivs[i].style.zIndex = "100";
         allDivs[i].style.left = "-100px";
       }
-
       divnews.style.bottom = "100px";
       divnews2.style.bottom = "200px";
       divnews3.style.bottom = "300px";
