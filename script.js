@@ -1,3 +1,5 @@
+// Code Helder
+
 let ExtensionId = chrome.runtime.id;
 
 //Fonction pour avoir un nombre random
@@ -158,17 +160,6 @@ function Newanimal() {
         "Régime alimentaire : " + value[0].characteristics.diet;
       document.body.appendChild(divnews);
 
-      divnews.style.display = "inline";
-      divnews.style.backgroundColor = "#fce3ad";
-      divnews.style.padding = "5px";
-      divnews.style.fontSize = "18px";
-      divnews.style.border = "#f3ad6b 2px solid";
-      divnews.style.borderRadius = "10px";
-      divnews.style.position = "fixed";
-      divnews.style.zIndex = "100";
-      divnews.style.bottom = "100px";
-      divnews.style.left = "-10px";
-
       let divnews2 = document.createElement("div");
       divnews2.className = "Info";
       divnews2.innerHTML =
@@ -180,8 +171,6 @@ function Newanimal() {
       divnews3.innerHTML =
         "Régime alimentaire 3 :" + value[0].characteristics.diet;
       document.body.appendChild(divnews3);
-
-
       let allDivs = document.getElementsByClassName("Info");
       console.log({ allDivs });
       for (let i = 0; i < allDivs.length; i++) {
