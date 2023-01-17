@@ -32,6 +32,7 @@ function changeimage(animal) {
       }
     });
 }
+
 // Creation d'une div pour les boutons
 var divButtons = document.createElement("div");
 divButtons.className = "div-buttons";
@@ -184,6 +185,7 @@ function Newanimal() {
     });
 }
 Newanimal();
+
 let statut = 0;
 
 function arrivingFromLeft(allDivs) {
@@ -192,7 +194,6 @@ function arrivingFromLeft(allDivs) {
     var id = setInterval(frame, 10);
     function frame() {
       if (pos == 350) {
-        console.log("test");
         clearInterval(id);
       } else {
         pos++;
