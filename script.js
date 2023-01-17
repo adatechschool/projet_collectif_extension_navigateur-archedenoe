@@ -28,7 +28,6 @@ function changeimage(animal) {
         count++;
         if (count == 10) {
           count = 0;
-          q;
         }
       }
     });
@@ -62,6 +61,32 @@ function changeButton(btn) {
   }
 }
 
+//changer le background
+function changeBackground (btn) {
+  if (btn == button1){
+    console.log("coucou")
+    document.body.style.background = `url(${
+      "chrome-extension://" + ExtensionId + "/images/SKY.jpg"
+    })`
+    document.body.style.backgroundSize = "cover";
+  }else if (btn == button2){
+    document.body.style.background = `url(${
+      "chrome-extension://" + ExtensionId + "/images/SNOW.jpg"
+    })`
+    document.body.style.backgroundSize = "cover";
+  }else if (btn == button3){
+    document.body.style.background = `url(${
+      "chrome-extension://" + ExtensionId + "/images/OCEAN.jpg"
+    })`
+    document.body.style.backgroundSize = "cover";
+  }else{
+    document.body.style.background = `url(${
+      "chrome-extension://" + ExtensionId + "/images/GRASS.jpg"
+    })`
+    document.body.style.backgroundSize = "cover";
+  }
+}
+
 // Creation des boutons
 let button1 = document.createElement("button");
 button1.type = "button";
@@ -69,6 +94,7 @@ button1.className = "btn-styled";
 button1.onclick = function () {
   changeimage("vulture");
   changeButton(button1);
+  changeBackground(button1);
 };
 divButtons.appendChild(button1);
 
@@ -78,6 +104,7 @@ button2.className = "btn-styled";
 button2.onclick = function () {
   changeimage("lynx");
   changeButton(button2);
+  changeBackground(button2)
 };
 divButtons.appendChild(button2);
 
@@ -87,6 +114,7 @@ button3.className = "btn-styled";
 button3.onclick = function () {
   changeimage("seahorse");
   changeButton(button3);
+  changeBackground(button3)
 };
 divButtons.appendChild(button3);
 
@@ -96,6 +124,7 @@ button4.className = "btn-styled";
 button4.onclick = function () {
   changeimage("ladybug");
   changeButton(button4);
+  changeBackground(button4)
 };
 divButtons.appendChild(button4);
 
@@ -131,53 +160,65 @@ for (let i = 0; i < allButtons.length; i++) {
 //Création des divs infos pour l'API2 (news)
 let divnews = document.createElement("div");
 divnews.className = "Info left";
+divnews.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews);
 
 let divnews2 = document.createElement("div");
 divnews2.className = "Info left";
+divnews2.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews2);
 
 let divnews3 = document.createElement("div");
 divnews3.className = "Info left";
+divnews3.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews3);
 
 //Création des divs infos pour vautour (news)
 let divnews4 = document.createElement("div");
 divnews4.className = "Info left";
+divnews4.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews4);
 
 let divnews5 = document.createElement("div");
 divnews5.className = "Info left";
+divnews5.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews5);
 
 let divnews6 = document.createElement("div");
 divnews6.className = "Info left";
+divnews6.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews6);
 
 //Création des divs infos pour coccinelle (news)
 let divnews7 = document.createElement("div");
 divnews7.className = "Info right";
+divnews7.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews7);
 
 let divnews8 = document.createElement("div");
 divnews8.className = "Info right";
+divnews8.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews8);
 
 let divnews9 = document.createElement("div");
 divnews9.className = "Info right";
+divnews9.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews9);
 
 //Création des divs infos pour lynx (news)
 let divnews10 = document.createElement("div");
 divnews10.className = "Info right";
+divnews10.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews10);
 
 let divnews11 = document.createElement("div");
 divnews11.className = "Info right";
+divnews11.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews11);
 
 let divnews12 = document.createElement("div");
 divnews12.className = "Info right";
+divnews12.style.backgroundColor = "#fce3ad";
 document.body.appendChild(divnews12);
 
 let allDivs = document.getElementsByClassName("Info left");
@@ -187,7 +228,6 @@ let allDivs2 = document.getElementsByClassName("Info right");
 // CSS allDivs
 for (let i = 0; i < allDivs.length; i++) {
   allDivs[i].style.display = "inline";
-  allDivs[i].style.backgroundColor = "#fce3ad";
   allDivs[i].style.padding = "5px";
   allDivs[i].style.fontSize = "18px";
   allDivs[i].style.border = "#f3ad6b 2px solid";
@@ -201,7 +241,6 @@ for (let i = 0; i < allDivs.length; i++) {
 // CSS allDivs2
 for (let i = 0; i < allDivs2.length; i++) {
   allDivs2[i].style.display = "inline";
-  allDivs2[i].style.backgroundColor = "#fce3ad";
   allDivs2[i].style.padding = "5px";
   allDivs2[i].style.fontSize = "18px";
   allDivs2[i].style.border = "#f3ad6b 2px solid";
