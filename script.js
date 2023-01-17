@@ -129,16 +129,18 @@ for (let i = 0; i < allButtons.length; i++) {
 //Création des divs infos pour l'API2 (news)
 let divnews = document.createElement("div");
 divnews.className = "Info";
+document.body.appendChild(divnews);
 
 let divnews2 = document.createElement("div");
 divnews2.className = "Info";
+document.body.appendChild(divnews2);
 
 let divnews3 = document.createElement("div");
 divnews3.className = "Info";
 
 let allDivs = document.getElementsByClassName("Info");
 console.log({ allDivs });
-console.log(allDivs.length);
+document.body.appendChild(divnews3);
 
 // CSS DivNews
 for (let i = 0; i < allDivs.length; i++) {
@@ -158,94 +160,85 @@ divnews2.style.bottom = "200px";
 divnews3.style.bottom = "300px";
 
 // Fonction API2 (news) pour fetch les infos et remplir les divs
-// function Newanimal() {
-//   let nom = "seahorse";
+function Newanimal() {
+  let nom = "seahorse";
 
-//   fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
-//     headers: { "X-Api-Key": "A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx" },
-//   })
-//     .then(function (res) {
-//       if (res.ok) {
-//         return res.json();
-//       }
-//     })
-//     .then(function (value) {
-//       // Mettre les infos dans les divs
-//       divnews.innerHTML =
-//         "Régime alimentaire : " + value[0].characteristics.diet;
-//       document.body.appendChild(divnews);
+  fetch("https://api.api-ninjas.com/v1/animals?name=" + nom, {
+    headers: { "X-Api-Key": "A8Se3TXGr1J+WsnbVJEwSw==GikJKEs7eqMvdvLx" },
+  })
+    .then(function (res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function (value) {
+      // Mettre les infos dans les divs
+      divnews.innerHTML =
+        "Régime alimentaire : " + value[0].characteristics.diet;
 
-//       divnews2.innerHTML =
-//         "Régime alimentaire 2 :" + value[0].characteristics.diet;
-//       document.body.appendChild(divnews2);
+      divnews2.innerHTML =
+        "Régime alimentaire 2 :" + value[0].characteristics.diet;
 
-//       divnews3.innerHTML =
-//         "Régime alimentaire 3 :" + value[0].characteristics.diet;
-//       document.body.appendChild(divnews3);
-//     });
-// }
-// Newanimal();
+      divnews3.innerHTML =
+        "Régime alimentaire 3 :" + value[0].characteristics.diet;
+    });
+}
+Newanimal();
+let statut = 0;
+
+function arrivingFromLeft(allDivs) {
+  for (let k = 0; k < allDivs.length; k++) {
+    var pos = -100;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == 350) {
+        console.log("test");
+        clearInterval(id);
+      } else {
+        pos++;
+        allDivs[k].style.left = pos + "px";
+      }
+    }
+  }
+  statut = 1;
+}
+
+function leavingToLeft(allDivs) {
+  for (let k = 0; k < allDivs.length; k++) {
+    var pos = 340;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == -100) {
+        clearInterval(id);
+      } else {
+        pos--;
+        allDivs[k].style.left = pos + "px";
+      }
+    }
+  }
+  statut = 0;
+}
 
 // // Création de la fonction AFK puis appel
-// let inactivityTime = function (allDivs) {
-//   // let time;
-//   function deplacements() {
-//     // clearTimeout(time);
-//     let time = setTimeout(function () {
-//       // clearTimeout(time);
-//       if (statut == 0) {
-//         arrivingFromLeft(allDivs);
-//       } else if (statut == 1) {
-//         console.log("test");
-//         document.onmousemove = leavingToLeft(allDivs);
-//         document.onkeypress = leavingToLeft(allDivs);
-//       } else {
-//         alert("Vous ête AFK");
-//       }
-//     }, 1000);
-//   }
-//   window.onload = deplacements;
-//   document.onmousemove = deplacements;
-//   document.onkeypress = deplacements;
-// };
+let inactivityTime = function (allDivs) {
+  window.onload = deplacements;
+  // document.onmousemove = deplacements;
+  document.onkeypress = deplacements;
+  function deplacements() {
+    console.log("COUCOU", statut);
+    if (statut == 0) {
+      setTimeout(function () {
+        arrivingFromLeft(allDivs);
+        console.log(statut);
+      }, 2000);
+    } else {
+      console.log("ELSE");
+      leavingToLeft(allDivs);
+    }
+  }
+  setTimeout(() => {
+    inactivityTime(allDivs);
+  }, 1000);
+};
 
-// inactivityTime(allDivs);
-
-// let statut = 0;
-
-// function arrivingFromLeft(allDivs) {
-//   return function () {
-//     for (let k = 0; k < allDivs.length; k++) {
-//       var pos = -100;
-//       var id = setInterval(frame, 10);
-//       function frame() {
-//         if (pos == 350) {
-//           console.log("test");
-//           clearInterval(id);
-//         } else {
-//           pos++;
-//           allDivs[k].style.left = pos + "px";
-//         }
-//       }
-//     }
-//     statut = 1;
-//   };
-// }
-
-// function leavingToLeft(allDivs) {
-//   return function () {
-//     for (let k = 0; k < allDivs.length; k++) {
-//       var pos = 340;
-//       var id = setInterval(frame, 10);
-//       function frame() {
-//         if (pos == -100) {
-//           clearInterval(id);
-//         } else {
-//           pos--;
-//           allDivs[k].style.left = pos + "px";
-//         }
-//       }
-//     }
-//     statut = 2;
-//   };
-// }
+inactivityTime(allDivs);
