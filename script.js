@@ -33,6 +33,19 @@ function changeimage(animal) {
     });
 }
 
+// Creation d'une div pour les boutons
+var divButtons = document.createElement("div");
+divButtons.className = "div-buttons";
+divButtons.style.backgroundColor = "black";
+divButtons.style.position = "fixed";
+divButtons.style.zIndex = "100";
+divButtons.style.bottom = "0px";
+divButtons.style.left = "50%";
+divButtons.style.transform = "translateX(-50%)";
+divButtons.style.border = "3px solid white";
+divButtons.style.borderRadius = "20px";
+document.body.appendChild(divButtons);
+
 // changer la couleur des boutons
 function changeButton(btn) {
   if (btn.style.backgroundColor == "black") {
@@ -47,19 +60,6 @@ function changeButton(btn) {
     btn.style.backgroundColor = "black";
   }
 }
-
-// Creation d'une div
-var divButtons = document.createElement("div");
-divButtons.className = "div-buttons";
-divButtons.style.backgroundColor = "black";
-divButtons.style.position = "fixed";
-divButtons.style.zIndex = "100";
-divButtons.style.bottom = "0px";
-divButtons.style.left = "50%";
-divButtons.style.transform = "translateX(-50%)";
-divButtons.style.border = "3px solid white";
-divButtons.style.borderRadius = "20px";
-document.body.appendChild(divButtons);
 
 // Creation des boutons
 let button1 = document.createElement("button");
@@ -127,77 +127,40 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.border = "2px solid white";
 }
 
-let statut = 0;
-
-function arrivingFromLeft(allDivs) {
-  for (let k = 0; k < allDivs.length; k++) {
-    var pos = -100;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (pos == 350) {
-        console.log("test")
-        clearInterval(id);
-      } else {
-        pos++;
-        allDivs[k].style.left = pos + "px";
-      }
-    }
-  }statut = 1;
-
-}
-
-function leavingToLeft(allDivs) {
-  return function () {
-    for (let k = 0; k < allDivs.length; k++) {
-    var pos = 340;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (pos == -100) {
-        clearInterval(id);
-      } else {
-        pos--;
-        allDivs[k].style.left = pos + "px";
-      }
-      }
-    }
-  }
-}
-
-
-// fonction AFK
-let inactivityTime = function (allDivs) {
-  let time;
-  window.onload = resetTimer;
-  document.onmousemove = resetTimer;
-  document.onkeypress = resetTimer;
-  function resetTimer() {
-    clearTimeout(time);
-    time = setTimeout(function () {
-      clearTimeout(time);
-      arrivingFromLeft(allDivs);
-      if (statut == 1 ){
-        console.log("test")
-        document.onmousemove = leavingToLeft(allDivs);
-        document.onkeypress = leavingToLeft(allDivs);
-        statut = 0;
-      } 
-    }, 1000);
-
-  }
-  
-};
-
-
+//Création des divs infos pour l'API2 (news)
 let divnews = document.createElement("div");
 divnews.className = "Info";
+document.body.appendChild(divnews);
 
 let divnews2 = document.createElement("div");
 divnews2.className = "Info";
+document.body.appendChild(divnews2);
 
 let divnews3 = document.createElement("div");
 divnews3.className = "Info";
 
-// Fonction API News
+let allDivs = document.getElementsByClassName("Info");
+console.log({ allDivs });
+document.body.appendChild(divnews3);
+
+// CSS DivNews
+for (let i = 0; i < allDivs.length; i++) {
+  allDivs[i].style.display = "inline";
+  allDivs[i].style.backgroundColor = "#fce3ad";
+  allDivs[i].style.padding = "5px";
+  allDivs[i].style.fontSize = "18px";
+  allDivs[i].style.border = "#f3ad6b 2px solid";
+  allDivs[i].style.borderRadius = "10px";
+  allDivs[i].style.position = "fixed";
+  allDivs[i].style.zIndex = "100";
+  allDivs[i].style.left = "-100px";
+}
+
+divnews.style.bottom = "100px";
+divnews2.style.bottom = "200px";
+divnews3.style.bottom = "300px";
+
+// Fonction API2 (news) pour fetch les infos et remplir les divs
 function Newanimal() {
   let nom = "seahorse";
 
@@ -210,41 +173,73 @@ function Newanimal() {
       }
     })
     .then(function (value) {
-     
-      // Creation DivNews
+      // Mettre les infos dans les divs
       divnews.innerHTML =
         "Régime alimentaire : " + value[0].characteristics.diet;
-      document.body.appendChild(divnews);
 
       divnews2.innerHTML =
         "Régime alimentaire 2 :" + value[0].characteristics.diet;
-      document.body.appendChild(divnews2);
-      
+
       divnews3.innerHTML =
         "Régime alimentaire 3 :" + value[0].characteristics.diet;
-      document.body.appendChild(divnews3);
-
-      let allDivs = document.getElementsByClassName("Info");
-
-      // CSS DivNews
-      for (let i = 0; i < allDivs.length; i++) {
-        allDivs[i].style.display = "inline";
-        allDivs[i].style.backgroundColor = "#fce3ad";
-        allDivs[i].style.padding = "5px";
-        allDivs[i].style.fontSize = "18px";
-        allDivs[i].style.border = "#f3ad6b 2px solid";
-        allDivs[i].style.borderRadius = "10px";
-        allDivs[i].style.position = "fixed";
-        allDivs[i].style.zIndex = "100";
-        allDivs[i].style.left = "-100px";
-      }
-
-      divnews.style.bottom = "100px";
-      divnews2.style.bottom = "200px";
-      divnews3.style.bottom = "300px";
-
-      inactivityTime(allDivs);
-
     });
 }
 Newanimal();
+
+let statut = 0;
+
+function arrivingFromLeft(allDivs) {
+  for (let k = 0; k < allDivs.length; k++) {
+    var pos = -100;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == 350) {
+        clearInterval(id);
+      } else {
+        pos++;
+        allDivs[k].style.left = pos + "px";
+      }
+    }
+  }
+  statut = 1;
+}
+
+function leavingToLeft(allDivs) {
+  for (let k = 0; k < allDivs.length; k++) {
+    var pos = 340;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == -100) {
+        clearInterval(id);
+      } else {
+        pos--;
+        allDivs[k].style.left = pos + "px";
+      }
+    }
+  }
+  statut = 0;
+}
+
+// // Création de la fonction AFK puis appel
+let inactivityTime = function (allDivs) {
+  window.onload = deplacements;
+  // document.onmousemove = deplacements;
+  document.onkeypress = deplacements;
+  function deplacements() {
+    console.log("COUCOU", statut);
+    if (statut == 0) {
+      setTimeout(function () {
+        arrivingFromLeft(allDivs);
+        console.log(statut);
+      }, 2000);
+    } else {
+      console.log("ELSE");
+      leavingToLeft(allDivs);
+    }
+  }
+  setTimeout(() => {
+    inactivityTime(allDivs);
+  }, 1000);
+};
+
+inactivityTime(allDivs);
