@@ -423,4 +423,8 @@ let inactivityTime = function (allDivs, allDivs2) {
   }, 1000);
 };
 
+<<<<<<< HEAD
 inactivityTime(allDivs, allDivs2);
+=======
+inactivityTime(allDivs, allDivs2);
+>>>>>>> 173d5e96ebce69812e36b480f22b2730f1b481c2
