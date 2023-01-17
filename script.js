@@ -128,70 +128,7 @@ for (let i = 0; i < allButtons.length; i++) {
   allButtons[i].style.border = "2px solid white";
 }
 
-<<<<<<< HEAD
 //Création des divs infos pour l'API2 (news)
-=======
-let statut = 0;
-
-function arrivingFromLeft(allDivs) {
-  for (let k = 0; k < allDivs.length; k++) {
-    var pos = -100;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (pos == 350) {
-        console.log("test")
-        clearInterval(id);
-      } else {
-        pos++;
-        allDivs[k].style.left = pos + "px";
-      }
-    }
-  }
-  statut = 1;
-}
-
-function leavingToLeft(allDivs) {
-  if ( statut == 1){
-    return function () {
-      for (let k = 0; k < allDivs.length; k++) {
-      var pos = 340;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (pos == -100) {
-          clearInterval(id);
-        } else {
-          pos--;
-          allDivs[k].style.left = pos + "px";
-        }
-        }
-      }statut = 0;
-    }
-  }
-}
-
-
-// fonction AFK
-let inactivityTime = function (allDivs) {
-  let time;
-  window.onload = resetTimer;
-  document.onkeypress = resetTimer;
-  function resetTimer() {
-    clearTimeout(time);
-    time = setTimeout(function () {
-      if (statut == 0){
-      arrivingFromLeft(allDivs);
-      } else if (statut == 1 ){
-        console.log(statut);
-        document.onkeypress = leavingToLeft(allDivs);
-      } 
-    }, 1000);
-
-  }
-  
-};
-
-
->>>>>>> dfddc49 (tkt)
 let divnews = document.createElement("div");
 divnews.className = "Info";
 document.body.appendChild(divnews);
@@ -246,32 +183,6 @@ function Newanimal() {
 
       divnews3.innerHTML =
         "Régime alimentaire 3 :" + value[0].characteristics.diet;
-<<<<<<< HEAD
-=======
-      document.body.appendChild(divnews3);
-
-      let allDivs = document.getElementsByClassName("Info");
-
-      // CSS DivNews
-      for (let i = 0; i < allDivs.length; i++) {
-        allDivs[i].style.display = "inline";
-        allDivs[i].style.backgroundColor = "#fce3ad";
-        allDivs[i].style.padding = "5px";
-        allDivs[i].style.fontSize = "18px";
-        allDivs[i].style.border = "#f3ad6b 2px solid";
-        allDivs[i].style.borderRadius = "10px";
-        allDivs[i].style.position = "fixed";
-        allDivs[i].style.zIndex = "100";
-        allDivs[i].style.left = "-200px";
-      }
-
-      divnews.style.bottom = "100px";
-      divnews2.style.bottom = "200px";
-      divnews3.style.bottom = "300px";
-
-      inactivityTime(allDivs);
-
->>>>>>> dfddc49 (tkt)
     });
 }
 Newanimal();
