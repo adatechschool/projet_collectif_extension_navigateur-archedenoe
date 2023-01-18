@@ -1,61 +1,41 @@
-// Recuperer l'id
 let ExtensionId = chrome.runtime.id;
-
-//Fonction pour avoir un nombre random
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-let count = getRandomInt(10);
-
-//Fonction avec fetch de l'api Unsplash pour une image random
 function changeimage(animal) {
-  fetch(
-    "https://api.unsplash.com/search/photos?query=" +
-      animal +
-      "&client_id=KlNUpmhuFzyX_hVlLRCmrNJw6zfCaGuLczhVSW-6lY4"
-  )
-    .then(function (res) {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then(function (value) {
-      let image = document.getElementsByTagName("img");
-      console.log(image);
-      for (let i = 0; i < image.length; i++) {
-        image[i].src = value.results[count].urls.small;
-        count++;
-        if (count == 10) {
-          count = 0;
+  fetch(`https://api.unsplash.com/search/photos?query=${animal}&client_id=KlNUpmhuFzyX_hVlLRCmrNJw6zfCaGuLczhVSW-6lY4`)
+    .then(res => res.json())
+    .then(data => {
+      let images = document.getElementsByTagName("img");
+      let randomIndex = Math.floor(Math.random() * data.results.length);
+      for (let i = 0; i < images.length; i++) {
+        images[i].src = data.results[randomIndex].urls.small;
+        randomIndex++;
+        if (randomIndex > 9){
+          randomIndex = 0;
         }
       }
-    });
+    })
+    .catch(err => console.log(err));
 }
-
 // Creation d'une div pour les boutons
-var divButtons = document.createElement("div");
+const divButtons = document.createElement("div");
 divButtons.className = "div-buttons";
-divButtons.style.backgroundColor = "black";
-divButtons.style.position = "fixed";
-divButtons.style.zIndex = "100";
-divButtons.style.bottom = "0px";
-divButtons.style.left = "50%";
-divButtons.style.transform = "translateX(-50%)";
-divButtons.style.border = "3px solid white";
-divButtons.style.borderRadius = "20px";
+divButtons.style.cssText = `
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid white;
+  border-radius: 20px;
+`;
 document.body.appendChild(divButtons);
-
 // changer la couleur des boutons
 function changeButton(btn) {
   if (btn.style.backgroundColor == "black") {
     for (let i = 0; i < allButtons.length; i++) {
-      if (allButtons[i] == btn) {
-        btn.style.backgroundColor = "#99ff99";
-      } else {
-        allButtons[i].style.backgroundColor = "black";
-      }
+      allButtons[i].style.backgroundColor = "black";
     }
+    btn.style.backgroundColor = "#99FF99";
   } else {
     btn.style.backgroundColor = "black";
   }
@@ -160,65 +140,65 @@ for (let i = 0; i < allButtons.length; i++) {
 //Création des divs infos pour l'API2 (news)
 let divnews = document.createElement("div");
 divnews.className = "Info left";
-divnews.style.backgroundColor = "#fce3ad";
+divnews.style.backgroundColor = "#679cfe";
 document.body.appendChild(divnews);
 
 let divnews2 = document.createElement("div");
 divnews2.className = "Info left";
-divnews2.style.backgroundColor = "#fce3ad";
+divnews2.style.backgroundColor = "#679cfe";
 document.body.appendChild(divnews2);
 
 let divnews3 = document.createElement("div");
 divnews3.className = "Info left";
-divnews3.style.backgroundColor = "#fce3ad";
+divnews3.style.backgroundColor = "#679cfe";
 document.body.appendChild(divnews3);
 
 //Création des divs infos pour vautour (news)
 let divnews4 = document.createElement("div");
 divnews4.className = "Info left";
-divnews4.style.backgroundColor = "#fce3ad";
+divnews4.style.backgroundColor = "#c4c002";
 document.body.appendChild(divnews4);
 
 let divnews5 = document.createElement("div");
 divnews5.className = "Info left";
-divnews5.style.backgroundColor = "#fce3ad";
+divnews5.style.backgroundColor = "#c4c002";
 document.body.appendChild(divnews5);
 
 let divnews6 = document.createElement("div");
 divnews6.className = "Info left";
-divnews6.style.backgroundColor = "#fce3ad";
+divnews6.style.backgroundColor = "#c4c002";
 document.body.appendChild(divnews6);
 
 //Création des divs infos pour coccinelle (news)
 let divnews7 = document.createElement("div");
 divnews7.className = "Info right";
-divnews7.style.backgroundColor = "#fce3ad";
+divnews7.style.backgroundColor = "#e91a13";
 document.body.appendChild(divnews7);
 
 let divnews8 = document.createElement("div");
 divnews8.className = "Info right";
-divnews8.style.backgroundColor = "#fce3ad";
+divnews8.style.backgroundColor = "#e91a13";
 document.body.appendChild(divnews8);
 
 let divnews9 = document.createElement("div");
 divnews9.className = "Info right";
-divnews9.style.backgroundColor = "#fce3ad";
+divnews9.style.backgroundColor = "#e91a13";
 document.body.appendChild(divnews9);
 
 //Création des divs infos pour lynx (news)
 let divnews10 = document.createElement("div");
 divnews10.className = "Info right";
-divnews10.style.backgroundColor = "#fce3ad";
+divnews10.style.backgroundColor = "#f6fafa";
 document.body.appendChild(divnews10);
 
 let divnews11 = document.createElement("div");
 divnews11.className = "Info right";
-divnews11.style.backgroundColor = "#fce3ad";
+divnews11.style.backgroundColor = "#f6fafa";
 document.body.appendChild(divnews11);
 
 let divnews12 = document.createElement("div");
 divnews12.className = "Info right";
-divnews12.style.backgroundColor = "#fce3ad";
+divnews12.style.backgroundColor = "#f6fafa";
 document.body.appendChild(divnews12);
 
 let allDivs = document.getElementsByClassName("Info left");
@@ -230,12 +210,13 @@ for (let i = 0; i < allDivs.length; i++) {
   allDivs[i].style.display = "inline";
   allDivs[i].style.padding = "5px";
   allDivs[i].style.fontSize = "18px";
-  allDivs[i].style.border = "#f3ad6b 2px solid";
+  allDivs[i].style.border = "2px solid black";
   allDivs[i].style.borderRadius = "10px";
   allDivs[i].style.position = "fixed";
   allDivs[i].style.zIndex = "100";
   allDivs[i].style.left = "-330px";
   allDivs[i].style.maxWidth = "300px";
+  allDivs[i].style.boxShadow = "5px 5px 5px black";
 }
 
 // CSS allDivs2
@@ -243,12 +224,13 @@ for (let i = 0; i < allDivs2.length; i++) {
   allDivs2[i].style.display = "inline";
   allDivs2[i].style.padding = "5px";
   allDivs2[i].style.fontSize = "18px";
-  allDivs2[i].style.border = "#f3ad6b 2px solid";
+  allDivs2[i].style.border = "2px solid black";
   allDivs2[i].style.borderRadius = "10px";
   allDivs2[i].style.position = "fixed";
   allDivs2[i].style.zIndex = "100";
   allDivs2[i].style.right = "-330px";
   allDivs2[i].style.maxWidth = "300px";
+  allDivs2[i].style.boxShadow = "5px 5px 5px black";
 }
 
 divnews.style.bottom = "100px";
@@ -282,13 +264,13 @@ function seahorseFact() {
     .then(function (value) {
       // Mettre les infos dans les divs
       divnews.innerHTML =
-        "Seahorse = Distinctive feature : " + value[0].characteristics.distinctive_feature;
+        "SEAHORSE = Distinctive feature : " + value[0].characteristics.distinctive_feature;
 
       divnews2.innerHTML =
-        "Seahorse = Favorite food : " + value[0].characteristics.favorite_food;
+        "SEAHORSE = Favorite food : " + value[0].characteristics.favorite_food;
 
       divnews3.innerHTML =
-        "Seahorse = Fun fact : " + value[0].characteristics.slogan;
+        "SEAHORSE = Fun fact : " + value[0].characteristics.slogan;
     });
 }
 seahorseFact();
@@ -308,13 +290,13 @@ function vultureFact() {
     .then(function (value) {
       // Mettre les infos dans les divs
       divnews4.innerHTML =
-        "Vulture = Main prey : " + value[6].characteristics.main_prey;
+        "VULTURE = Main prey : " + value[6].characteristics.main_prey;
 
       divnews5.innerHTML =
-        "Vulture = Lifestyle : " + value[6].characteristics.lifestyle;
+        "VULTURE = Lifestyle : " + value[6].characteristics.lifestyle;
 
       divnews6.innerHTML =
-        "Vulture = Fun fact : " + value[6].characteristics.slogan;
+        "VULTURE = Fun fact : " + value[6].characteristics.slogan;
     });
 }
 vultureFact();
@@ -335,13 +317,13 @@ function ladybugFact() {
     .then(function (value) {
       // Mettre les infos dans les divs
       divnews7.innerHTML =
-        "Ladybug = Biggest threat : " + value[0].characteristics.biggest_threat;
+        "LADYBUG = Biggest threat : " + value[0].characteristics.biggest_threat;
 
       divnews8.innerHTML =
-        "Ladybug = Age of sexual maturity : " + value[0].characteristics.age_of_sexual_maturity;
+        "LADYBUG = Age of sexual maturity : " + value[0].characteristics.age_of_sexual_maturity;
 
       divnews9.innerHTML =
-        "Ladybug = Number of species : " + value[0].characteristics.number_of_species;
+        "LADYBUG = Number of species : " + value[0].characteristics.number_of_species;
     });
 }
 ladybugFact();
@@ -361,13 +343,13 @@ function lynxFact() {
     .then(function (value) {
       // Mettre les infos dans les divs
       divnews10.innerHTML =
-        "Lynx = Habitat : " + value[3].characteristics.habitat;
+        "LYNX = Habitat : " + value[3].characteristics.habitat;
 
       divnews11.innerHTML =
-        "Lynx = Lifespan : " + value[3].characteristics.lifespan;
+        "LYNX = Lifespan : " + value[3].characteristics.lifespan;
 
       divnews12.innerHTML =
-        "Lynx = Fun fact : " + value[3].characteristics.slogan;
+        "LYNX = Fun fact : " + value[3].characteristics.slogan;
     });
 }
 lynxFact();
@@ -451,7 +433,7 @@ let inactivityTime = function (allDivs, allDivs2) {
       setTimeout(function () {
         arrivingFromLeft(allDivs);
         arrivingFromRight(allDivs2);
-      }, 2000);
+      }, 6000);
     } else {
       leavingToLeft(allDivs);
       leavingToRight(allDivs2);
