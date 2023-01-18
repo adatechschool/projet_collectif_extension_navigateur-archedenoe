@@ -1,65 +1,51 @@
 // Recuperer l'id
 let ExtensionId = chrome.runtime.id;
 
-//Fonction pour avoir un nombre random
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-let count = getRandomInt(10);
-
-//Fonction avec fetch de l'api Unsplash pour une image random
 function changeimage(animal) {
-  fetch(
-    "https://api.unsplash.com/search/photos?query=" +
-      animal +
-      "&client_id=KlNUpmhuFzyX_hVlLRCmrNJw6zfCaGuLczhVSW-6lY4"
-  )
-    .then(function (res) {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then(function (value) {
-      let image = document.getElementsByTagName("img");
-      console.log(image);
-      for (let i = 0; i < image.length; i++) {
-        image[i].src = value.results[count].urls.small;
-        count++;
-        if (count == 10) {
-          count = 0;
+  fetch(`https://api.unsplash.com/search/photos?query=${animal}&client_id=KlNUpmhuFzyX_hVlLRCmrNJw6zfCaGuLczhVSW-6lY4`)
+    .then(res => res.json())
+    .then(data => {
+      let images = document.getElementsByTagName("img");
+      let randomIndex = Math.floor(Math.random() * data.results.length);
+      for (let i = 0; i < images.length; i++) {
+        images[i].src = data.results[randomIndex].urls.small;
+        randomIndex++;
+        if (randomIndex > 9){
+          randomIndex = 0;
         }
       }
-    });
+    })
+    .catch(err => console.log(err));
 }
 
 // Creation d'une div pour les boutons
-var divButtons = document.createElement("div");
+const divButtons = document.createElement("div");
 divButtons.className = "div-buttons";
-divButtons.style.backgroundColor = "black";
-divButtons.style.position = "fixed";
-divButtons.style.zIndex = "100";
-divButtons.style.bottom = "0px";
-divButtons.style.left = "50%";
-divButtons.style.transform = "translateX(-50%)";
-divButtons.style.border = "3px solid white";
-divButtons.style.borderRadius = "20px";
+divButtons.style.cssText = `
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid white;
+  border-radius: 20px;
+`;
 document.body.appendChild(divButtons);
+
 
 // changer la couleur des boutons
 function changeButton(btn) {
   if (btn.style.backgroundColor == "black") {
     for (let i = 0; i < allButtons.length; i++) {
-      if (allButtons[i] == btn) {
-        btn.style.backgroundColor = "#99ff99";
-      } else {
-        allButtons[i].style.backgroundColor = "black";
-      }
+      allButtons[i].style.backgroundColor = "black";
     }
+    btn.style.backgroundColor = "#99ff99";
   } else {
     btn.style.backgroundColor = "black";
   }
 }
+
 
 // Creation des boutons
 let button1 = document.createElement("button");
@@ -406,12 +392,11 @@ let inactivityTime = function (allDivs, allDivs2) {
   // document.onmousemove = deplacements;
   document.onkeypress = deplacements;
   function deplacements() {
-    console.log("COUCOU", statut);
     if (statut == 0) {
       setTimeout(function () {
         arrivingFromLeft(allDivs);
         arrivingFromRight(allDivs2);
-      }, 2000);
+      }, 20000);
     } else {
       leavingToLeft(allDivs);
       leavingToRight(allDivs2);
@@ -419,7 +404,7 @@ let inactivityTime = function (allDivs, allDivs2) {
   }
   setTimeout(() => {
     inactivityTime(allDivs, allDivs2);
-  }, 1000);
+  }, 10000);
 };
 
 inactivityTime(allDivs, allDivs2);
