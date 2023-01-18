@@ -1,14 +1,13 @@
 body {
-    /* background: url(./images/fond.jpg)  no-repeat center/cover; */
-    background-color: white;
+    background-color: rgb(60, 60, 60);
     margin: 0;
     padding: 0;
 }
 
 h1 {
     font-size: 5em;
-    color: #bfcdab;
-    text-shadow: black 2px 2px;
+    color: #ffffff;
+    text-shadow: rgb(169, 169, 169) 3px 3px;
 }
 .header {
     text-align: center;
