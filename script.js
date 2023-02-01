@@ -140,65 +140,65 @@ for (let i = 0; i < allButtons.length; i++) {
 //Création des divs infos pour l'API2 (news)
 let divnews = document.createElement("div");
 divnews.className = "Info left";
-divnews.style.backgroundColor = "#679cfe";
+divnews.style.background = "linear-gradient(90deg, #008289, #ccfaf8)";
 document.body.appendChild(divnews);
 
 let divnews2 = document.createElement("div");
 divnews2.className = "Info left";
-divnews2.style.backgroundColor = "#679cfe";
+divnews2.style.background = "linear-gradient(90deg, #008289, #ccfaf8)";
 document.body.appendChild(divnews2);
 
 let divnews3 = document.createElement("div");
 divnews3.className = "Info left";
-divnews3.style.backgroundColor = "#679cfe";
+divnews3.style.background = "linear-gradient(90deg, #008289, #ccfaf8)";
 document.body.appendChild(divnews3);
 
 //Création des divs infos pour vautour (news)
 let divnews4 = document.createElement("div");
 divnews4.className = "Info left";
-divnews4.style.backgroundColor = "#c4c002";
+divnews4.style.background = "linear-gradient(90deg, #85746c, #efe0ce)";
 document.body.appendChild(divnews4);
 
 let divnews5 = document.createElement("div");
 divnews5.className = "Info left";
-divnews5.style.backgroundColor = "#c4c002";
+divnews5.style.background = "linear-gradient(90deg, #85746c, #efe0ce)";
 document.body.appendChild(divnews5);
 
 let divnews6 = document.createElement("div");
 divnews6.className = "Info left";
-divnews6.style.backgroundColor = "#c4c002";
+divnews6.style.background = "linear-gradient(90deg, #85746c, #efe0ce)";
 document.body.appendChild(divnews6);
 
 //Création des divs infos pour coccinelle (news)
 let divnews7 = document.createElement("div");
 divnews7.className = "Info right";
-divnews7.style.backgroundColor = "#e91a13";
+divnews7.style.background = "linear-gradient(90deg, #ffbf51, #e33e06)";
 document.body.appendChild(divnews7);
 
 let divnews8 = document.createElement("div");
 divnews8.className = "Info right";
-divnews8.style.backgroundColor = "#e91a13";
+divnews8.style.background = "linear-gradient(90deg, #ffbf51, #e33e06)";
 document.body.appendChild(divnews8);
 
 let divnews9 = document.createElement("div");
 divnews9.className = "Info right";
-divnews9.style.backgroundColor = "#e91a13";
+divnews9.style.background = "linear-gradient(90deg, #ffbf51, #e33e06)";
 document.body.appendChild(divnews9);
 
 //Création des divs infos pour lynx (news)
 let divnews10 = document.createElement("div");
 divnews10.className = "Info right";
-divnews10.style.backgroundColor = "#f6fafa";
+divnews10.style.background = "linear-gradient(90deg, #dfeafd, #779bab)";
 document.body.appendChild(divnews10);
 
 let divnews11 = document.createElement("div");
 divnews11.className = "Info right";
-divnews11.style.backgroundColor = "#f6fafa";
+divnews11.style.background = "linear-gradient(90deg, #dfeafd, #779bab)";
 document.body.appendChild(divnews11);
 
 let divnews12 = document.createElement("div");
 divnews12.className = "Info right";
-divnews12.style.backgroundColor = "#f6fafa";
+divnews12.style.background = "linear-gradient(90deg, #dfeafd, #779bab)";
 document.body.appendChild(divnews12);
 
 let allDivs = document.getElementsByClassName("Info left");
@@ -428,12 +428,11 @@ let inactivityTime = function (allDivs, allDivs2) {
   // document.onmousemove = deplacements;
   document.onkeypress = deplacements;
   function deplacements() {
-    console.log("COUCOU", statut);
     if (statut == 0) {
       setTimeout(function () {
         arrivingFromLeft(allDivs);
         arrivingFromRight(allDivs2);
-      }, 6000);
+      }, 2000);
     } else {
       leavingToLeft(allDivs);
       leavingToRight(allDivs2);
